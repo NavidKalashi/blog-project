@@ -10,28 +10,33 @@ from .forms import PostForm, EditPost
 # def home(request):
     # return render(request, 'home.html', {})
 
+# Home
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ['-date']
     # ordering = ['-id']
 
+# Detail
 class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_detail.html'
     
+# Add
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
     # fields = '__all__'
-    
+
+# Update
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditPost
     template_name = 'update_post.html'
     # fields = ['title', 'title_tag', 'body']
     
+# Delete
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
