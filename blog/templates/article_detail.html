@@ -7,7 +7,7 @@
 {% block content %}
     <h3>{{post.title}}</h3>
     <small>By: {{post.author.first_name}} {{post.author.last_name}} - {{post.date}} </small>
-    <p>{{post.body}}</p>
+    <p>{{post.body|safe}}</p>
 
     <br><br>
     <a href="{% url 'home' %}" class='btn btn-secondary'>Back Home</a>
