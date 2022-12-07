@@ -11,7 +11,9 @@
 
     <br><br>
     <a href="{% url 'home' %}" class='btn btn-secondary'>Back Home</a>
-    <a href="{% url 'update_post' post.pk %}">Edit</a>
-    <a href="{% url 'delete_post' post.pk %}">Delete</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'update_post' post.pk %}">Edit</a>
+        <a href="{% url 'delete_post' post.pk %}">Delete</a>
+    {% endif %}
 
 {% endblock content %}

@@ -5,16 +5,20 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Delete Post</h1>
-    <br><br>
-    <h3>Delete: {{post.title}}</h3>
+    {% if user.is_authenticated %}
+        <h1>Delete Post</h1>
+        <br><br>
+        <h3>Delete: {{post.title}}</h3>
 
-    <div class="form-gruop">
-        <form action="" method='post'>
-            {% csrf_token %}
-            <strong>Are you sure?!</strong>
-            <button type='submit' class='btn btn-secondary' >Yes</button>
-        </form>
-    </div>
+        <div class="form-gruop">
+            <form action="" method='post'>
+                {% csrf_token %}
+                <strong>Are you sure?!</strong>
+                <button type='submit' class='btn btn-secondary' >Yes</button>
+            </form>
+        </div>
+    {% else %}
+        you're not allowed here!
+    {% endif %}
 
 {% endblock content %}

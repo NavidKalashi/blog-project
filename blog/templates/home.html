@@ -9,8 +9,12 @@
 
     {% for post in object_list %}
         <li><a href="{% url 'article_detail' post.pk %}">{{post.title}}</a> - {{post.author.first_name}} {{post.author.last_name}}
-            <a href="{% url 'update_post' post.pk %}">Edit</a> <a href="{% url 'delete_post' post.pk %}">Delete</a> <br>
-            {{post.body}}</li>
+            {% if user.is_authenticated %}
+                <a href="{% url 'update_post' post.pk %}">Edit</a> 
+                <a href="{% url 'delete_post' post.pk %}">Delete</a> <br>
+            {% else %}
+            {% endif %}
+            {{post.body|slice:':200'}}</li>
             date: {{post.date}}
     {% endfor %}
 
