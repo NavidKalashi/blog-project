@@ -18,8 +18,8 @@ class HomeView(ListView):
     # ordering = ['-id']
 
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats)
-    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
 
 # Detail
 class ArticleDetailView(DetailView):
@@ -39,6 +39,7 @@ class AddCategorytView(CreateView):
     # form_class = PostForm
     template_name = 'add_category.html'
     fields = '__all__'
+    success_url = reverse_lazy('add_post')
 
 # Update
 class UpdatePostView(UpdateView):
