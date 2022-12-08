@@ -7,7 +7,8 @@
 {% block content %}
     <h1>Post</h1>
 
-    {% for post in object_list %}
+    <ul>
+        {% for post in object_list %}
         <li><a href="{% url 'article_detail' post.pk %}">{{post.title}}</a>
              - {{post.author.first_name}} {{post.author.last_name}}
              - <a href="{% url 'category' post.category|slugify %}">{{post.category}}</a>
@@ -15,9 +16,11 @@
                 - <a href="{% url 'update_post' post.pk %}">Edit</a> 
                 - <a href="{% url 'delete_post' post.pk %}">Delete</a> <br>
             {% endif %}
+            <br>
             {{post.body|slice:':200'|safe}}</li>
             date: {{post.date}}
-    {% endfor %}
-
+            <hr>
+        {% endfor %}
+    </ul>
         
 {% endblock content %}
