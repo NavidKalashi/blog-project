@@ -17,6 +17,12 @@
                 <button type='submit' class='btn btn-secondary' >Post</button>
             </form>
         </div>
+
+        <script>
+            let name = {{user.id}}
+            document.getElementById('bob').value = name
+        </script>
+
     {% else %}
     you're not allowed here!
     {% endif %}
