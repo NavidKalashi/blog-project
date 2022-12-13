@@ -12,6 +12,7 @@
             <div class="form-gruop">
                 <form action="" method='post'>
                     {% csrf_token %}
+                    {{form.media}}
                     {{form.as_p}}
                     <button type='submit' class='btn btn-secondary' >Update</button>
                 </form>
