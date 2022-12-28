@@ -7,6 +7,12 @@
 {% block content %}
     <h3>{{post.title}}</h3>
     <small>By: {{post.author.first_name}} {{post.author.last_name}} - {{post.date}} </small>
+    <br>
+
+    {% if post.header_image %}
+        <img src="{{post.header_image.url}}" style='width: 500px'>
+    {% endif %}
+    
     <p>{{post.body|safe}}</p>
 
     <br><br>
