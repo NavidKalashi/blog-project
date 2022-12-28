@@ -20,7 +20,8 @@
                 
             {% endif %}
             <br>
-            {{post.body|slice:':200'|safe}}</li>
+            {{post.snippet}}
+            </li>
             date: {{post.date}}
             <hr>
         {% endfor %}
