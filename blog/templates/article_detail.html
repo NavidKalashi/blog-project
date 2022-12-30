@@ -65,8 +65,12 @@
                     {{post.author.last_name}}
                 </h5>
                 <p class="card-text"><small class="text-muted">
+                    {% if post.author.profile.id %}
+                        <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile Page</a>
+                    {% endif %}
+
                     {% if post.author.profile.website_url %}
-                        <a href="{{post.author.profile.website_url}}">Website</a>
+                        | <a href="{{post.author.profile.website_url}}">Website</a>
                     {% endif %}
                     {% if post.author.profile.facebook_url %}
                         | <a href="{{post.author.profile.facebook_url}}">facebook</a> 
