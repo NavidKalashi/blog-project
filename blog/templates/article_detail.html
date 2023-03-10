@@ -15,9 +15,8 @@
     {% endif %}
     
     <p>{{post.body|safe}}</p>
-
+    <hr>
     <br><br>
-    <a href="{% url 'home' %}" class='btn btn-secondary'>Back Home</a>
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %}
             <a href="{% url 'update_post' post.pk %}">Edit</a>
@@ -25,8 +24,6 @@
         {% endif %}
     {% endif %}
 
-    <br><br>
-    <hr>
     <br>
     <form action="{% url 'like_post' post.pk %}" method='POST'>
         {% csrf_token %}
@@ -47,7 +44,22 @@
                 <small>Login to like</small>
         {% endif %} - {{total_likes}}
     </form>
-    <br><br>
+    <br>
+
+    <h2>Comments...</h2>
+
+    {% if not post.comments.all %}
+        No comments yet... <a href="#">Add one</a>
+    {%else%}
+        {% for comment in post.comments.all %}
+            <strong>
+                {{comment.name}} - {{comment.date_added}}
+            </strong>
+            <br>
+            {{comment.body}}
+            <br><br>
+        {%endfor%}
+    {%endif%}
 
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
