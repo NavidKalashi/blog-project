@@ -3,8 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
-from .models import Post, Category
-from .forms import PostForm, EditPost
+from .models import Post, Category, Comment
+from .forms import PostForm, EditPost, CommentForm
 
 # Create your views here.
 
@@ -63,6 +63,13 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'add_post.html'
     # fields = '__all__'
+    
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'add_comment.html'
+    # fields = '__all__'
+    success_url = reverse_lazy('home')
 
 # Category
 class AddCategorytView(CreateView):
