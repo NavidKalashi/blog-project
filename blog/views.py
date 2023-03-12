@@ -70,6 +70,10 @@ class AddCommentView(CreateView):
     template_name = 'add_comment.html'
     # fields = '__all__'
     success_url = reverse_lazy('home')
+    
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
 
 # Category
 class AddCategorytView(CreateView):
